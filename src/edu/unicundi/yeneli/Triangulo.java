@@ -22,6 +22,7 @@ public class Triangulo extends FiguraG{
     Punto p2;
     Punto p3;
     String tipoTriangulo;
+    double ladoIgual, ladoDiferente;
     
     double lado1, lado2, lado3;
     
@@ -77,21 +78,48 @@ public class Triangulo extends FiguraG{
       
     }
     
+    public double HallarAreas(){
+        double area=0;
+        if (tipoTriangulo.equals("EQUILATERO")){
+             area=(Math.sqrt(3)/4);
+             area=area*(lado1*lado1);
+        }
+        
+        if(tipoTriangulo.equals("ISOSCELES")){
+            
+            area=(ladoDiferente*Math.sqrt((ladoIgual*ladoIgual)-(ladoDiferente*ladoDiferente)/4))/2;
+            
+        }
+        
+        if (tipoTriangulo.equals("ESCALENO")){
+            double semiPerimetro= (lado1+lado2+lado3)/2;
+            area=Math.sqrt((semiPerimetro)*(semiPerimetro-lado1)*(semiPerimetro-lado2)*(semiPerimetro-lado3));
+        }
+        return area;
+    }
     public void IdentificarTriangulo(){
         
          if(lado1==lado2 && lado2==lado3 &&lado1==lado3){
              tipoTriangulo="EQUILATERO";
-             
          }
          if((lado1==lado2 && lado1!=lado3)||(lado3==lado2 && lado1!=lado3)||(lado1==lado3 && lado2!=lado3)){
              tipoTriangulo="ISOSCELES";
-             
+             if(lado1==lado2 && lado1!=lado3){
+                 ladoIgual=lado1;
+                 ladoDiferente=lado3;
+             }
+             if(lado3==lado2 && lado1!=lado3){
+                 ladoIgual=lado3;
+                 ladoDiferente=lado1;
+             }
+             if(lado1==lado3 && lado2!=lado3){
+                 ladoIgual=lado3;
+                 ladoDiferente=lado2;
+             }
          }
          if(lado1!=lado2 && lado2!=lado3 &&lado1!=lado3){
              tipoTriangulo="ESCALENO";
-             
          }
-        
     }
     
     

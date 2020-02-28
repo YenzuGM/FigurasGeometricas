@@ -295,6 +295,7 @@ public class PanelControl extends javax.swing.JFrame {
            LPerimetro.setText(""+df.format(t.Perimetro()));
            t.IdentificarTriangulo();
            LTipoTriangulo.setText("TRIANGULO "+t.getTipoTriangulo());
+           LArea.setText(""+df.format(t.HallarAreas()));
            
            
        }
