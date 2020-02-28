@@ -6,20 +6,21 @@
 package edu.unicundi.yeneli;
 
 /**
- *
- * @author 52753
+ *Clase Padre
+ * 
+ * @author  Yeneli Garcia M
  */
+
 public class Punto {
+    //Variables X y Y
     private int x;
     private int y;
-
+//Constructor
     public Punto() {
         this.x = x;
         this.y = y;
     }
-    
-    
-
+  //Getters y Setters  
     public int getX() {
         return x;
     }

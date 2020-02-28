@@ -13,10 +13,13 @@ import java.util.LinkedList;
  * @author Yeneli Garcia Muñoz
  */
 public class AreaDibujo extends javax.swing.JPanel {
-
+    //Objeto tipo triangulo
     Triangulo t = new Triangulo();
+    //Objeto tipo FiguraG
     FiguraG r = new FiguraG();
+    //Objeto que guarda la opcion del usuario
     int opcion=0;
+    //Lista de puntos
     LinkedList <Punto> listaPuntos = new LinkedList(); 
 
     public LinkedList<Punto> getListaPuntos() {
@@ -43,20 +46,31 @@ public class AreaDibujo extends javax.swing.JPanel {
         initComponents();
         r=new FiguraG();
     }
-    
+    /**
+     * Se reciben las coordenadas X,Y
+     * @param x
+     * @param y 
+     */
     public void CoordenadasXY(int x, int y){
         r.setX(x);
         r.setY(y);
     }
-    
+    /**
+     * Se reciben el ancho y alto 
+     * @param ancho
+     * @param alto 
+     */
     public void EnviarAnchoAlto(int ancho, int alto){
         r.setAncho(ancho);
         r.setAlto(alto);
         
     }
-
-    
-    
+    /**
+     * Metodo que ejecuta los metodos de dibujo
+     * de las figuras, dependiendo de la opcion
+     * del usuario
+     * @param g 
+     */
     @Override
     public void paint(Graphics g) {
         
@@ -66,9 +80,6 @@ public class AreaDibujo extends javax.swing.JPanel {
              r.DibujarEnPlano(g);
         }
        if (opcion==3){
-           for(int c=0; c<listaPuntos.size(); c++){
-           System.out.println("AREA DIBUJO "+ listaPuntos.get(c).getX()+ "Y="+ listaPuntos.get(c).getY());
-           }
            
            t.setListaPuntos(listaPuntos);
            t.DibujarTriangulo(g);

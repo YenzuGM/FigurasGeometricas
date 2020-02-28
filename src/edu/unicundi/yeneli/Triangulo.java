@@ -16,14 +16,17 @@ import java.util.LinkedList;
  * @author Yeneli Garcia Muñoz
  */
 public class Triangulo extends FiguraG{
-    
+    //Lista de Puntos 
     LinkedList <Punto> listaPuntos = new LinkedList();  
+    //Variables para guardar los 3 puntos del triangulo
     Punto p1;
     Punto p2;
     Punto p3;
+    //Variable para guardar el tipo de triangulo
     String tipoTriangulo;
+    //Variables para guardar lados iguales y diferentes 
     double ladoIgual, ladoDiferente;
-    
+    //Varianles para los 3 lados
     double lado1, lado2, lado3;
     
     public String getTipoTriangulo() {
@@ -34,8 +37,6 @@ public class Triangulo extends FiguraG{
         this.tipoTriangulo = tipoTriangulo;
     }
     
-    
-
     public LinkedList<Punto> getListaPuntos() {
         return listaPuntos;
     }
@@ -43,7 +44,13 @@ public class Triangulo extends FiguraG{
     public void setListaPuntos(LinkedList<Punto> listaPuntos) {
         this.listaPuntos = listaPuntos;
     }
-    
+   
+    /**
+     * Metodo que calcula la hipotenusa a travez de coordenadas. 
+     * @param punto1
+     * @param punto2
+     * @return 
+     */
     public double Hipotenusa(Punto punto1, Punto punto2){
         double hipotenusa=0;
         int cateto1 = punto1.getX()-punto2.getX();
@@ -52,7 +59,12 @@ public class Triangulo extends FiguraG{
         
         return hipotenusa;
     }
-    
+    /**
+     * Metodo que calcula el perimetro 
+     * llamando al metodo hipotenusa y
+     * sumando los lados que este retorna.
+     * @return 
+     */
     public double Perimetro(){
         double perimetro=0;
        System.out.println("Perimetro "+perimetro);
@@ -77,7 +89,11 @@ public class Triangulo extends FiguraG{
         g.drawLine(p3.getX(),p3.getY(), p1.getX(),p1.getY());
       
     }
-    
+    /**
+     * Metodo que encuentra el area, 
+     * dependiendo del tipo de triangulo
+     * @return 
+     */
     public double HallarAreas(){
         double area=0;
         if (tipoTriangulo.equals("EQUILATERO")){
@@ -97,6 +113,10 @@ public class Triangulo extends FiguraG{
         }
         return area;
     }
+    /**
+     * Metodo que identifica el tipo de 
+     * triangulo introducido por el usuario
+     */
     public void IdentificarTriangulo(){
         
          if(lado1==lado2 && lado2==lado3 &&lado1==lado3){

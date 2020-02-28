@@ -11,7 +11,13 @@ package edu.unicundi.yeneli;
  */
 public class Rectangulo extends FiguraG{
     
-    
+    /**
+     * Metodo sobreescrito que calcula el
+     * perimetro del rectangulo
+     * @param fAncho
+     * @param fAlto
+     * @return 
+     */
     @Override
     public int CalcularPerimetro(int fAncho, int fAlto){
         int perimetro=0;

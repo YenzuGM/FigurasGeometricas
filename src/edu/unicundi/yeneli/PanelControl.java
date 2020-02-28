@@ -11,22 +11,33 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author 52753
+ * @author Yeneli Garcia M
  */
 public class PanelControl extends javax.swing.JFrame {
    
-     int n=0;
+    ///Variable que guarda la cantidad de puntos de cada Figura
+     int numPuntos=0;
+     //Lista que guarda los puntos de la figura
      LinkedList <Punto> listaPuntos = new LinkedList();  
+     //Objeto tipo Punto 
      Punto obj = new Punto();
+     //Objeto tipo FiguraG
      FiguraG objf= new FiguraG();
+     //Objeto tipo Rectangulo
      Rectangulo objRec= new Rectangulo();
+     //Objeto tipo triangulo
      Triangulo t = new Triangulo();
+     //Contador de coordenadas(puntos) ingresadas por el usuario
      int contadorIngresos=0;
+     //Ancho de la figura
      int anchoFigura;
+     //Alto de la figura
      int altoFigura;
+     //Variable que guarda la opcion del usuario
      int opcion;
+     //Formato de decimales para la impresion de areas y perimetros
      
-      DecimalFormat df = new DecimalFormat("#0.0000");
+     DecimalFormat df = new DecimalFormat("#0.0000");
      
      
     /**
@@ -59,6 +70,8 @@ public class PanelControl extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         areaDibujo1 = new edu.unicundi.yeneli.AreaDibujo();
         LTipoTriangulo = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,6 +113,10 @@ public class PanelControl extends javax.swing.JFrame {
 
         LTipoTriangulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/unicundi/yeneli/imagenes/ejemploT.jpg"))); // NOI18N
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/edu/unicundi/yeneli/imagenes/ejemploC.jpg"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -109,65 +126,75 @@ public class PanelControl extends javax.swing.JFrame {
                 .addComponent(areaDibujo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tY, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(8, 8, 8))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(12, 12, 12)
-                                .addComponent(LPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(41, 41, 41)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(LPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 12, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(LArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(LTipoTriangulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
-                                .addComponent(LArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(LTipoTriangulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tY, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(tX, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(36, 36, 36)))
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(botonIngresar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tX, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(10, 10, 10)))))
-                .addContainerGap())
+                        .addGap(46, 46, 46)
+                        .addComponent(botonIngresar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(botonIngresar)
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(LArea, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addComponent(LTipoTriangulo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(areaDibujo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(botonIngresar)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(LArea, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(12, 12, 12)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))
+                                .addGap(18, 18, 18)
+                                .addComponent(LTipoTriangulo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(23, 23, 23))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(areaDibujo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(63, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -183,26 +210,75 @@ public class PanelControl extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+/**
+ * Metodo donde se agregan las coordenadas
+ * a la lista, asi mismo, llama al metodo para dibujar
+ * dependiendo de la opcion del usuario
+ * @param evt 
+ */
+    private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
+        //Condicion que ejecuta el metodo Opcion
+        if (numPuntos==0){
+            Opcion();
+        }
+        //Condicion que agrega los puntos a la lista 
+        if (contadorIngresos<numPuntos-1){
+            ingresarALista();
+            return;
+            
+        } if (contadorIngresos==numPuntos-1){
+            ingresarALista();
+        }
+        
+        if(opcion==1 || opcion==2){
+            CalcularAnchoYAlto(); 
+           //Se mandan a llamar el metodo que valida si las coordenadas coinciden con la opcion del usuario
+            int retornaValidacion= objf.ValidarCoordenadas(listaPuntos,altoFigura,anchoFigura);
+         
+            if(retornaValidacion==opcion){
+                MandarDibujar();
+            }
+            if(retornaValidacion!=opcion){
+                JOptionPane.showMessageDialog(null, "LAS COORDENADAS NO CONCUERDAN CON LA FIGURA SELECCIONADA");
+                return;
+            }
 
+        }
+       
+
+        MandarDibujar();
+
+    }//GEN-LAST:event_botonIngresarActionPerformed
+
+    
+    /**
+     * Metodo que recibe la opcion del usuario y lo guarda
+     * en la variable opcion, asi mismo, se asigna el numero
+     * de puntos que tiene cada figura
+     */
     public void Opcion(){
          opcion = Integer.parseInt(JOptionPane.showInputDialog("¿Que quieres Dibujar? \n 1.-Cuadrado \n 2.-Rectangulo \n 3.-Triangulo"));
         
         if (opcion==1 || opcion==2){
-            n=4;
+            numPuntos=4;
         }
         if (opcion==3){
-            n=3;
+            numPuntos=3;
         }
         if (opcion>3 ||  opcion<1){
             Opcion();
         }
     }
     
+    /**
+     * Metodo que ingresa los objetos tipo punto (las coordenadas)
+     * a la lista.
+     */
     public void ingresarALista(){
         
         int x=0;
         int y=0;
-       
+       //Se extraen las coordenadas 
         x = Integer.parseInt(this.tX.getText());
         y = Integer.parseInt(this.tY.getText());
         Punto obj = new Punto();
@@ -211,63 +287,31 @@ public class PanelControl extends javax.swing.JFrame {
 
        listaPuntos.add(obj);
 
-       for(int c=0; c<listaPuntos.size(); c++){
-           System.out.println("++X="+ listaPuntos.get(c).getX()+ "Y="+ listaPuntos.get(c).getY());
-       }
+      //Se limpian los campos
        tX.setText(null);
        tY.setText(null);
-       
+       //Incrementa el numero de ingresos del usuario
        contadorIngresos++;
        
        
     }
-    
+    /**
+     * Se calcula el alto y el ancho de la figura
+     */
     public void CalcularAnchoYAlto(){
         anchoFigura=(listaPuntos.get(1).getX()-listaPuntos.get(0).getX());
-        System.out.println("Anchhoo " +anchoFigura);
+        
         altoFigura=(listaPuntos.get(2).getY()-listaPuntos.get(1).getY());
-        System.out.println("AnLTO " +altoFigura);
-        
-        
-        
-    }
-    private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
-     
-        if (n==0){
-          Opcion();
-      }
-      System.out.println(""+n);
-
-      if (contadorIngresos<n-1){
-          ingresarALista();
-          System.out.println("lll contadorIngresos "+contadorIngresos);
-          return;
-          
-      } if (contadorIngresos==n-1){
-          ingresarALista();
-          System.out.println("2 contadorIngresos "+contadorIngresos);
-      }
-      
-      if(opcion==1 || opcion==2){
-            CalcularAnchoYAlto();
-      int retornaValidacion= objf.ValidarCoordenadas(listaPuntos,altoFigura,anchoFigura);
-         
-       if(retornaValidacion==opcion){
-           MandarDibujar();
-       }
-       if(retornaValidacion!=opcion){
-           JOptionPane.showMessageDialog(null, "LAS COORDENADAS NO CONCUERDAN CON LA FIGURA SELECCIONADA");
-           return;
-       }
-      
-      }
-//      objf.ValidarCoordenadas(listaPuntos,altoFigura,anchoFigura);
        
-        MandarDibujar();
-       
-    }//GEN-LAST:event_botonIngresarActionPerformed
+        
+    } 
+    /**
+     * Metodo que ejecuta los metodos de dibujo
+     * de las figuras, asi mismo los metodos de
+     * calculo de area y perimetro
+     */
     public void MandarDibujar(){
-        areaDibujo1.opcion=opcion;
+       areaDibujo1.opcion=opcion;
         
         //Enviar coordenadas iniciales 
        areaDibujo1.CoordenadasXY(listaPuntos.get(0).getX(),listaPuntos.get(0).getY());
@@ -296,8 +340,6 @@ public class PanelControl extends javax.swing.JFrame {
            t.IdentificarTriangulo();
            LTipoTriangulo.setText("TRIANGULO "+t.getTipoTriangulo());
            LArea.setText(""+df.format(t.HallarAreas()));
-           
-           
        }
        
         
@@ -348,6 +390,8 @@ public class PanelControl extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField tX;
     private javax.swing.JTextField tY;
