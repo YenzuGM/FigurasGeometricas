@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import javax.swing.JOptionPane;
 
 /**
- *
+ *Clase Panel de Control 
  * @author Yeneli Garcia M
  */
 public class PanelControl extends javax.swing.JFrame {

@@ -6,7 +6,7 @@
 package edu.unicundi.yeneli;
 
 /**
- *
+ *Clase Rectangulo
  * @author Yeneli Garcia M
  */
 public class Rectangulo extends FiguraG{

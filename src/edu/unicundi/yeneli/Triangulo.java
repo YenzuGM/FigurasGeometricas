@@ -12,7 +12,7 @@ import java.util.LinkedList;
 
 
 /**
- *
+ *Clase Triangulo
  * @author Yeneli Garcia Muñoz
  */
 public class Triangulo extends FiguraG{

@@ -9,7 +9,7 @@ import java.awt.Graphics;
 import java.util.LinkedList;
 
 /**
- *
+ *Area de dibujo
  * @author Yeneli Garcia Muñoz
  */
 public class AreaDibujo extends javax.swing.JPanel {

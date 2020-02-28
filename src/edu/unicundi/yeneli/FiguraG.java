@@ -5,7 +5,7 @@ import java.awt.Color;
 import java.util.LinkedList;
 import java.util.Scanner;
 /**
- *
+ *Clase FiguraG 
  * @author Yeneli Garcia M
  */
 public class FiguraG extends Punto{
