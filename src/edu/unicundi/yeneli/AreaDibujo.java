@@ -6,15 +6,36 @@
 package edu.unicundi.yeneli;
 
 import java.awt.Graphics;
+import java.util.LinkedList;
 
 /**
  *
- * @author 52753
+ * @author Yeneli Garcia Muñoz
  */
 public class AreaDibujo extends javax.swing.JPanel {
 
-    
+    Triangulo t = new Triangulo();
     FiguraG r = new FiguraG();
+    int opcion=0;
+    LinkedList <Punto> listaPuntos = new LinkedList(); 
+
+    public LinkedList<Punto> getListaPuntos() {
+        return listaPuntos;
+    }
+
+    public void setListaPuntos(LinkedList<Punto> listaPuntos) {
+        this.listaPuntos = listaPuntos;
+    }
+
+    public int getOpcion() {
+        return opcion;
+    }
+
+    public void setOpcion(int opcion) {
+        this.opcion = opcion;
+    }
+    
+    
     /**
      * Creates new form AreaDibujo
      */
@@ -34,10 +55,24 @@ public class AreaDibujo extends javax.swing.JPanel {
         
     }
 
+    
+    
     @Override
     public void paint(Graphics g) {
+        
         super.paint(g); //To change body of generated methods, choose Tools | Templates.
-        r.DibujarEnPlano(g);
+        
+        if(opcion==1 || opcion==2){
+             r.DibujarEnPlano(g);
+        }
+       if (opcion==3){
+           for(int c=0; c<listaPuntos.size(); c++){
+           System.out.println("AREA DIBUJO "+ listaPuntos.get(c).getX()+ "Y="+ listaPuntos.get(c).getY());
+           }
+           
+           t.setListaPuntos(listaPuntos);
+           t.DibujarTriangulo(g);
+       }
     }
     
     public void Actualizar(){

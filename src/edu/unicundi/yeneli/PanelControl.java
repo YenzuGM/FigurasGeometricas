@@ -5,6 +5,7 @@
  */
 package edu.unicundi.yeneli;
 
+import java.text.DecimalFormat;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 
@@ -13,16 +14,21 @@ import javax.swing.JOptionPane;
  * @author 52753
  */
 public class PanelControl extends javax.swing.JFrame {
-    
+   
      int n=0;
      LinkedList <Punto> listaPuntos = new LinkedList();  
      Punto obj = new Punto();
      FiguraG objf= new FiguraG();
      Rectangulo objRec= new Rectangulo();
+     Triangulo t = new Triangulo();
      int contadorIngresos=0;
      int anchoFigura;
      int altoFigura;
      int opcion;
+     
+      DecimalFormat df = new DecimalFormat("#0.0000");
+     
+     
     /**
      * Creates new form PanelControl
      */
@@ -84,11 +90,11 @@ public class PanelControl extends javax.swing.JFrame {
         areaDibujo1.setLayout(areaDibujo1Layout);
         areaDibujo1Layout.setHorizontalGroup(
             areaDibujo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 481, Short.MAX_VALUE)
+            .addGap(0, 474, Short.MAX_VALUE)
         );
         areaDibujo1Layout.setVerticalGroup(
             areaDibujo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 389, Short.MAX_VALUE)
+            .addGap(0, 388, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -100,14 +106,14 @@ public class PanelControl extends javax.swing.JFrame {
                 .addComponent(areaDibujo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
+                        .addGap(98, 98, 98)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tY, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(8, 8, 8))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
+                        .addGap(41, 41, 41)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
@@ -118,10 +124,10 @@ public class PanelControl extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(LArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
+                        .addGap(49, 49, 49)
                         .addComponent(botonIngresar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
+                        .addGap(98, 98, 98)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tX, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -220,7 +226,8 @@ public class PanelControl extends javax.swing.JFrame {
         
     }
     private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
-      if (n==0){
+     
+        if (n==0){
           Opcion();
       }
       System.out.println(""+n);
@@ -230,38 +237,44 @@ public class PanelControl extends javax.swing.JFrame {
           System.out.println("lll contadorIngresos "+contadorIngresos);
           return;
           
-      } if (contadorIngresos==3){
+      } if (contadorIngresos==n-1){
           ingresarALista();
           System.out.println("2 contadorIngresos "+contadorIngresos);
       }
       
-       CalcularAnchoYAlto();
-       
-//      objf.ValidarCoordenadas(listaPuntos,altoFigura,anchoFigura);
-       int retornaValidacion= objf.ValidarCoordenadas(listaPuntos,altoFigura,anchoFigura);
-       
+      if(opcion==1 || opcion==2){
+            CalcularAnchoYAlto();
+      int retornaValidacion= objf.ValidarCoordenadas(listaPuntos,altoFigura,anchoFigura);
+         
        if(retornaValidacion==opcion){
            MandarDibujar();
        }
        if(retornaValidacion!=opcion){
            JOptionPane.showMessageDialog(null, "LAS COORDENADAS NO CONCUERDAN CON LA FIGURA SELECCIONADA");
+           return;
        }
+      
+      }
+//      objf.ValidarCoordenadas(listaPuntos,altoFigura,anchoFigura);
        
-       
+        MandarDibujar();
        
     }//GEN-LAST:event_botonIngresarActionPerformed
     public void MandarDibujar(){
-       
+        areaDibujo1.opcion=opcion;
+        
         //Enviar coordenadas iniciales 
        areaDibujo1.CoordenadasXY(listaPuntos.get(0).getX(),listaPuntos.get(0).getY());
        
-       for(int c=0; c<listaPuntos.size(); c++){
-           System.out.println("X="+ listaPuntos.get(c).getX()+ "Y="+ listaPuntos.get(c).getY());
-       }
+       if (opcion==1 || opcion==2){
        areaDibujo1.EnviarAnchoAlto(altoFigura, anchoFigura);
+       }
+       if (opcion==3){
+           areaDibujo1.listaPuntos=listaPuntos;
+       }
        
        areaDibujo1.Actualizar();
-
+       
        if(opcion==1 || opcion==2){
            LArea.setText(""+objf.CalcularArea(altoFigura,anchoFigura));
            if(opcion==1){
@@ -270,6 +283,10 @@ public class PanelControl extends javax.swing.JFrame {
            if(opcion==2){
            LPerimetro.setText(""+objRec.CalcularPerimetro(altoFigura,anchoFigura));
             }
+       }
+       if(opcion==3){
+           t.setListaPuntos(listaPuntos);
+           LPerimetro.setText(""+df.format(t.Perimetro()));
        }
        
         

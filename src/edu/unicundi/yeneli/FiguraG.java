@@ -9,7 +9,15 @@ import java.util.Scanner;
  * @author 52753
  */
 public class FiguraG extends Punto{
-    
+    private int opcion;
+
+    public int getOpcion() {
+        return opcion;
+    }
+
+    public void setOpcion(int opcion) {
+        this.opcion = opcion;
+    }
     private int ancho;
     private int alto;
     
@@ -42,9 +50,12 @@ public class FiguraG extends Punto{
         g.drawString("Canvas",10,10);
         
         g.setColor(Color.RED);
+        
+   
         g.drawRect(this.getX(),this.getY(),this.getAlto(), this.getAncho());
         g.fillRect(this.getX(),this.getY(),this.getAlto(), this.getAncho());
-        
+       
+     
     }
     
     public int ValidarCoordenadas(LinkedList <Punto> listaC,int altoFigura, int anchoFigura){
