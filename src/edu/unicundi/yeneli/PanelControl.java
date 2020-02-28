@@ -58,6 +58,7 @@ public class PanelControl extends javax.swing.JFrame {
         LArea = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         areaDibujo1 = new edu.unicundi.yeneli.AreaDibujo();
+        LTipoTriangulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,6 +98,8 @@ public class PanelControl extends javax.swing.JFrame {
             .addGap(0, 388, Short.MAX_VALUE)
         );
 
+        LTipoTriangulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -118,11 +121,13 @@ public class PanelControl extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(12, 12, 12)
-                                .addComponent(LPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(LPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
-                                .addComponent(LArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(LArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(LTipoTriangulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(botonIngresar))
@@ -133,7 +138,7 @@ public class PanelControl extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(10, 10, 10)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,7 +161,9 @@ public class PanelControl extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(72, 72, 72))
+                .addGap(18, 18, 18)
+                .addComponent(LTipoTriangulo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(areaDibujo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,7 +196,6 @@ public class PanelControl extends javax.swing.JFrame {
         if (opcion>3 ||  opcion<1){
             Opcion();
         }
-        
     }
     
     public void ingresarALista(){
@@ -287,6 +293,10 @@ public class PanelControl extends javax.swing.JFrame {
        if(opcion==3){
            t.setListaPuntos(listaPuntos);
            LPerimetro.setText(""+df.format(t.Perimetro()));
+           t.IdentificarTriangulo();
+           LTipoTriangulo.setText("TRIANGULO "+t.getTipoTriangulo());
+           
+           
        }
        
         
@@ -330,6 +340,7 @@ public class PanelControl extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LArea;
     private javax.swing.JLabel LPerimetro;
+    private javax.swing.JLabel LTipoTriangulo;
     private edu.unicundi.yeneli.AreaDibujo areaDibujo1;
     private javax.swing.JButton botonIngresar;
     private javax.swing.JLabel jLabel1;

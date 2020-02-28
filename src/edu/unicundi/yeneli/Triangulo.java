@@ -21,6 +21,19 @@ public class Triangulo extends FiguraG{
     Punto p1;
     Punto p2;
     Punto p3;
+    String tipoTriangulo;
+    
+    double lado1, lado2, lado3;
+    
+    public String getTipoTriangulo() {
+        return tipoTriangulo;
+    }
+
+    public void setTipoTriangulo(String tipoTriangulo) {
+        this.tipoTriangulo = tipoTriangulo;
+    }
+    
+    
 
     public LinkedList<Punto> getListaPuntos() {
         return listaPuntos;
@@ -43,9 +56,9 @@ public class Triangulo extends FiguraG{
         double perimetro=0;
        System.out.println("Perimetro "+perimetro);
        
-        double lado1=Hipotenusa(listaPuntos.get(0),listaPuntos.get(1));
-        double lado2=Hipotenusa(listaPuntos.get(1),listaPuntos.get(2));
-        double lado3=Hipotenusa(listaPuntos.get(2),listaPuntos.get(0));
+         lado1=Hipotenusa(listaPuntos.get(0),listaPuntos.get(1));
+         lado2=Hipotenusa(listaPuntos.get(1),listaPuntos.get(2));
+         lado3=Hipotenusa(listaPuntos.get(2),listaPuntos.get(0));
         
         perimetro=lado1+lado2+lado3;
         
@@ -64,6 +77,22 @@ public class Triangulo extends FiguraG{
       
     }
     
+    public void IdentificarTriangulo(){
+        
+         if(lado1==lado2 && lado2==lado3 &&lado1==lado3){
+             tipoTriangulo="EQUILATERO";
+             
+         }
+         if((lado1==lado2 && lado1!=lado3)||(lado3==lado2 && lado1!=lado3)||(lado1==lado3 && lado2!=lado3)){
+             tipoTriangulo="ISOSCELES";
+             
+         }
+         if(lado1!=lado2 && lado2!=lado3 &&lado1!=lado3){
+             tipoTriangulo="ESCALENO";
+             
+         }
+        
+    }
     
     
 }
