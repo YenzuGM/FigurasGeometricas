@@ -16,7 +16,7 @@ public class AreaDibujo extends javax.swing.JPanel {
     //Objeto tipo triangulo
     Triangulo t = new Triangulo();
     //Objeto tipo FiguraG
-    FiguraG r = new FiguraG();
+    FiguraG r = new Rectangulo();
     //Objeto que guarda la opcion del usuario
     int opcion=0;
     //Lista de puntos
@@ -44,7 +44,7 @@ public class AreaDibujo extends javax.swing.JPanel {
      */
     public AreaDibujo() {
         initComponents();
-        r=new FiguraG();
+        r=new Rectangulo();
     }
     /**
      * Se reciben las coordenadas X,Y

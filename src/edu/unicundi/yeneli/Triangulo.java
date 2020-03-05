@@ -65,7 +65,7 @@ public class Triangulo extends FiguraG{
      * sumando los lados que este retorna.
      * @return 
      */
-    public double Perimetro(){
+    public double CalcularPerimetro(){
         double perimetro=0;
        System.out.println("Perimetro "+perimetro);
        
@@ -76,8 +76,8 @@ public class Triangulo extends FiguraG{
         perimetro=lado1+lado2+lado3;
         
         return perimetro;
-        
     }
+    
     @Override
     public void DibujarEnPlano(Graphics g){
         p1=listaPuntos.get(0);
@@ -95,7 +95,7 @@ public class Triangulo extends FiguraG{
      * dependiendo del tipo de triangulo
      * @return 
      */
-    public double HallarAreas(){
+    public double CalcularArea(){
         double area=0;
         if (tipoTriangulo.equals("EQUILATERO")){
              area=(Math.sqrt(3)/4);

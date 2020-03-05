@@ -25,7 +25,7 @@ public class PanelControl extends javax.swing.JFrame{
      //Objeto tipo Punto 
      Punto obj = new Punto();
      //Objeto tipo FiguraG
-     FiguraG objf= new FiguraG();
+     FiguraG objf= new Triangulo();
      //Objeto tipo Rectangulo
      Rectangulo objRec= new Rectangulo();
      //Objeto tipo triangulo
@@ -513,10 +513,10 @@ public class PanelControl extends javax.swing.JFrame{
        }
        if(op==3){
            t.setListaPuntos(listaAux);
-           LPerimetro.setText(""+df.format(t.Perimetro()));
+           LPerimetro.setText(""+df.format(t.CalcularPerimetro()));
            t.IdentificarTriangulo();
            LTipoTriangulo.setText("TRIANGULO "+t.getTipoTriangulo());
-           LArea.setText(""+df.format(t.HallarAreas()));
+           LArea.setText(""+df.format(t.CalcularArea()));
        }
     }
     /**

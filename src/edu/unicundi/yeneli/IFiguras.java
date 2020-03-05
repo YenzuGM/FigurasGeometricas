@@ -12,5 +12,6 @@ public interface IFiguras {
     
     public void DibujarEnPlano(Graphics g);
     
+    public int CalcularPerimetro(int fAncho, int fAlto);
     
 }

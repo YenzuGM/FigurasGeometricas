@@ -8,7 +8,7 @@ import java.util.Scanner;
  *Clase FiguraG 
  * @author Yeneli Garcia M
  */
-public class FiguraG extends Punto{
+public abstract class FiguraG extends Punto implements IFiguras{
  //Variable que guarda la opcion del usuario  
     private int opcion;
 //Variables de ancho y alto de la figura
