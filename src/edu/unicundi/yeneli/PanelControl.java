@@ -38,13 +38,13 @@ public class PanelControl extends javax.swing.JFrame{
      int altoFigura;
      //Variable que guarda la opcion del usuario
      int opcion;
-     
+     //Variable que guarda el numero de figura en el que se esta
      int nFigura=1;
-
+    //Getter de opcion
     public int getOpcion() {
         return opcion;
     }
-
+    //Setter de opcion
     public void setOpcion(int opcion) {
         this.opcion = opcion;
     }
@@ -201,8 +201,8 @@ public class PanelControl extends javax.swing.JFrame{
                                     .addComponent(bNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6))
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5))
                                 .addGap(9, 9, 9))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(botonIngresar)
@@ -317,59 +317,84 @@ public class PanelControl extends javax.swing.JFrame{
  * @param evt 
  */
     private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
-        //Condicion que ejecuta el metodo Opcion
-       
-        
+        //Si es la primera figura 
         if(nFigura==1){
+            //Se envia la primera lista al metodo que introduce las coordenadas 
             MandarLista(listaPuntos);
+            //Cuando se introduzca la ultima coordenada 
            if (contadorIngresos==numPuntos) {
-               System.out.println(">c");
+               //El contador de ingresos se reinicia a 0
                contadorIngresos=0; 
+               //Se rompe el metodo
                return;
            }
         }
+        //Si es la segunda figura
         if(nFigura==2){
+            //Se manda la segunda lista al metodo que introduce las coordenadas
             MandarLista(listaPuntos2);
         }
-       if (nFigura==3){             
+        //Si nFigura es igual a 3 (Una vez que ya se hayan introducido las coordenadas de lad dos figuras)
+       if (nFigura==3){     
+           //Se llama el metodo de la Figura 1 
            FiguraUno();
+           //Se llama el metodo de la Figura 2
            FiguraDos();
         
        }
     }//GEN-LAST:event_botonIngresarActionPerformed
-
+/**
+ * Metodo que realiza las acciones con 
+ * las coordenadas de la segunda figura 
+ * deacuerdo a la opcion del usuario
+ */
     public void FiguraDos(){
-        
+        //Si selecciona cuadrado o retangulo (1 o 2)
          if(opcion2==1 || opcion2==2){
+            //Se manda a llamar el metodo para calcular el ancho y alto enviando la lista de las coordenadas de la figura 2 
             CalcularAnchoYAlto(listaPuntos2); 
            //Se mandan a llamar el metodo que valida si las coordenadas coinciden con la opcion del usuario
             int retornaValidacion= objf.ValidarCoordenadas(listaPuntos2,altoFigura,anchoFigura);
-         
+           //si la validacion coincide con la opcion del usuario 
             if(retornaValidacion==opcion2){
+                //Se llama el metodo mandardibujar con los parametros de la figura dos, la lista, el area, y los campos de texto 
                 MandarDibujar(areaDibujo2,listaPuntos2,LPerimetro2,LArea2,LTipoTriangulo2,opcion2);
-//                MandarDibujar();
             }
+            //Si las coordenadas no coinciden con lo que selecciono el usuario 
             if(retornaValidacion!=opcion2){
+                //Se indica al usuario que las coordenadas no concuerdan con la figura
                 JOptionPane.showMessageDialog(null, "LAS COORDENADAS NO CONCUERDAN CON LA FIGURA SELECCIONADA");
+               //Se rompe el metodo
                 return;
             }
         }
         //Si opcion es 3 
         MandarDibujar(areaDibujo2,listaPuntos2,LPerimetro2,LArea2,LTipoTriangulo2,opcion2);
-//        MandarDibujar();
-        
+
     }
+
+   /**
+ * Metodo que realiza las acciones con 
+ * las coordenadas de la primera figura 
+ * de acuerdo a la opcion del usuario
+ */
     public void FiguraUno(){
+         //Si selecciona cuadrado o retangulo (1 o 2)
          if(opcion==1 || opcion==2){
+           //Se manda a llamar el metodo para calcular el ancho y alto enviando la lista de las coordenadas de la figura 1
             CalcularAnchoYAlto(listaPuntos); 
            //Se mandan a llamar el metodo que valida si las coordenadas coinciden con la opcion del usuario
             int retornaValidacion= objf.ValidarCoordenadas(listaPuntos,altoFigura,anchoFigura);
-         
+           //si la validacion coincide con la opcion del usuario 
             if(retornaValidacion==opcion){
+                //Se llama el metodo mandardibujar con los parametros de la figura uno, la lista, el area, y los campos de texto 
                 MandarDibujar(areaDibujo1,listaPuntos,LPerimetro,LArea,LTipoTriangulo,opcion);
             }
+            //Si las coordenadas no coinciden con lo que selecciono el usuario 
             if(retornaValidacion!=opcion){
+                 //Se indica al usuario que las coordenadas no concuerdan con la figura
                 JOptionPane.showMessageDialog(null, "LAS COORDENADAS NO CONCUERDAN CON LA FIGURA SELECCIONADA");
+                 //Se rompe el metodo
                 return;
             }
         }
@@ -377,33 +402,49 @@ public class PanelControl extends javax.swing.JFrame{
         MandarDibujar(areaDibujo1,listaPuntos,LPerimetro,LArea,LTipoTriangulo,opcion);
     
     }
+    /**
+     * Metodo que llama al metodo de ingresar coordenadas
+     * dependiendo de cuantas hayan sido ingresadas anteriormente
+     * @param listaTemp 
+     */
     public void MandarLista(LinkedList <Punto> listaTemp){
+        //Si aun no es la ultima coordenada
         if (contadorIngresos<numPuntos-1){
-            
+            //Se envia la lista recibida al metodo que ingresa coordenadas a la lista
             ingresarALista(listaTemp);
-            return;
-            
-        } if (contadorIngresos==numPuntos-1){
+            //Se rompe el metodo
+            return; 
+        } 
+        //Si es la ultima coordenada
+        if (contadorIngresos==numPuntos-1){
+            //Se envia la lista recibida al metodo que ingresa coordenadas a la lista
             ingresarALista(listaTemp);
-            
+            //Imprime en consola la lista 
             for(Punto p : listaTemp){
                 System.out.println(p);
             }
-            
-            System.out.println("////");
+            //Si sigue siendo la figura 1
             if (nFigura==1){
+             //Ejecutamos nuevamente el metodo Opcion
             opcion2=Opcion("Figura 2");
+            //Igualamos el contador de ingresos a la variable de numPuntos 
             contadorIngresos=numPuntos;
-                System.out.println("Despues de opcion");
            
-            } nFigura++;
+            } 
+            //ingrementamos el numero de figura 
+            nFigura++;
     }
         
     }
-    
-    
-    
+    /**
+     * Boton que permite introducir nuevas coordenadas 
+     * @param evt 
+     */
     private void bNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNuevoActionPerformed
+       /**
+        * Se resetean los campos y variables a como
+        * estaban en un principio 
+        */
        tX.setText(null);
        tY.setText(null);
        LArea.setText(null);
@@ -414,12 +455,11 @@ public class PanelControl extends javax.swing.JFrame{
        LTipoTriangulo2.setText(null);
        numPuntos=0;
        nFigura=1;
-       
        contadorIngresos=0;
        listaPuntos.clear();
        listaPuntos2.clear();
       opcion2=0;
-      
+     //Se vuelve a llamar el metodo opcion y se guarda en la variable opcion (que es para la figura 1)  
      opcion=Opcion("Figura 1");
        
     }//GEN-LAST:event_bNuevoActionPerformed
@@ -431,39 +471,46 @@ public class PanelControl extends javax.swing.JFrame{
      * de puntos que tiene cada figura
      */
     public int Opcion(String n){
+       //Se inicializa la variable local opc como 0
         int opc = 0;
-        
+        //Mientras opc no sea alguna de las opciones validas 
         while (opc>3 ||  opc<1){
-            
+            //Se Pregunta al usuario atravez de un cuadro de dialogo que figura quiere dibujar
             opc = Integer.parseInt(JOptionPane.showInputDialog(n+"\n ¿Que quieres Dibujar? \n 1.-Cuadrado \n 2.-Rectangulo \n 3.-Triangulo"));
             
         }
-        
+        //Si la opcion es 1 o 2 (Cuadrado o rectangulo)
         if (opc==1 || opc==2){
+            //numPuntos es igual a 0
             numPuntos=4;
         }
+        //Si opc es igual a 3 (triangulo)
         if (opc==3){
+            //NumPuntos es igual a 3 
             numPuntos=3;
         }
-        
-        System.out.println(""+opc);
+       //Se returna la opcion del usuario
         return opc;
     }
     
     /**
-     * Metodo que ingresa los objetos tipo punto (las coordenadas)
-     * a la lista.
+     * Metodo que recibe una lista 
+     * e ingresa las coordenadas en ella 
+     * @param listaPuntos 
      */
     public void ingresarALista(LinkedList <Punto> listaPuntos  ){
+       //Variables int para x y y 
         int x=0;
         int y=0;
        //Se extraen las coordenadas 
         x = Integer.parseInt(this.tX.getText());
         y = Integer.parseInt(this.tY.getText());
+        //Nuevo objeto tipo punto 
         Punto obj = new Punto();
+        //Se setean x y y del cuadro de texto 
        obj.setX(x);
        obj.setY(y);
-
+       //Se añade el objeto a la lista
        listaPuntos.add(obj);
 
       //Se limpian los campos
@@ -473,49 +520,73 @@ public class PanelControl extends javax.swing.JFrame{
        contadorIngresos++;
     }
     /**
-     * Se calcula el alto y el ancho de la figura
+     * Metodo que alcula el ancho y alto de 
+     * la figura (cuadrado o rectangulo) a 
+     * partir de una lista que recibe
+     * @param listaAux 
      */
     public void CalcularAnchoYAlto(LinkedList <Punto> listaAux){
+        //Se calcula el ancho y se guarda en la variable anchoFigura
         anchoFigura=(listaAux.get(1).getX()-listaAux.get(0).getX());
-        
+        //Se calcula el alto de la figura y se guarda en la variable alto 
         altoFigura=(listaAux.get(2).getY()-listaAux.get(1).getY());
        
     } 
     /**
      * Metodo que ejecuta los metodos de dibujo
      * de las figuras, asi mismo los metodos de
-     * calculo de area y perimetro
+     * calculo de area y perimetro.
+     * Recibe las variables especificas de cada figura
+     * @param areaD
+     * @param listaAux
+     * @param LPerimetro
+     * @param LArea
+     * @param LTipoTriangulo
+     * @param op 
      */
     public void MandarDibujar(AreaDibujo areaD,LinkedList <Punto> listaAux,JLabel LPerimetro, JLabel LArea, JLabel LTipoTriangulo, int op){
-        
+       //Se manda al area de dibujo recibida la opcion del usuario  
        areaD.opcion=op;
         
-        //Enviar coordenadas iniciales 
+      //Se envian las coordenadas iniciales 
        areaD.CoordenadasXY(listaAux.get(0).getX(),listaAux.get(0).getY());
-       
+      //Si es cuadrado o rectangulo  
        if (op==1 || op==2){
-       areaD.EnviarAnchoAlto(altoFigura, anchoFigura);
+          //Se envia el ancho y alto a el area de dibujo
+          areaD.EnviarAnchoAlto(altoFigura, anchoFigura);
        }
        if (op==3){
+           //Se envia la lista al area de dibujo
            areaD.listaPuntos=listaAux;
        }
-       
+      //Se actualiza el area de dibujo, se repinta  
       areaD.Actualizar();
-       
+       //Si es cuadrado o rectangulo 
        if(op==1 || op==2){
+           //Se imprime el area obtenida del metodo de calcular area
            LArea.setText(""+objf.CalcularArea(altoFigura,anchoFigura));
+           //Si es cuadrado
            if(op==1){
-           LPerimetro.setText(""+objf.CalcularPerimetro(altoFigura,anchoFigura));
+               //Se manda a llamar el metodo que calcula el perimetro y se imprime en el label de perimetro
+               LPerimetro.setText(""+objf.CalcularPerimetro(altoFigura,anchoFigura));
             }
+           //Si es un rectangulo
            if(op==2){
-           LPerimetro.setText(""+objRec.CalcularPerimetro(altoFigura,anchoFigura));
+               //Se manda a llamar el metodo que calcula el perimetro y se imprime en el label de perimetro
+               LPerimetro.setText(""+objRec.CalcularPerimetro(altoFigura,anchoFigura));
             }
        }
+       //Si es triangulo 
        if(op==3){
+           //Se envia la lista la clase triangulo
            t.setListaPuntos(listaAux);
+           //Se calcula el perimetro y se imprime en el label de perimetro 
            LPerimetro.setText(""+df.format(t.CalcularPerimetro()));
+           //Se llama el metodo que identifica el triangulo
            t.IdentificarTriangulo();
+           //Se imprime el tipo de triangulo en el Label 
            LTipoTriangulo.setText("TRIANGULO "+t.getTipoTriangulo());
+           //Se calcula el area y se imprime en el label para Area
            LArea.setText(""+df.format(t.CalcularArea()));
        }
     }

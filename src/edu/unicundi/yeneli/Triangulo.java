@@ -80,7 +80,7 @@ public class Triangulo extends FiguraG{
     
     @Override
     public void DibujarEnPlano(Graphics g){
-        p1=listaPuntos.get(0);
+        p1=listaPuntos.get(0); 
         p2=listaPuntos.get(1);
         p3=listaPuntos.get(2);
         
