@@ -78,7 +78,8 @@ public class Triangulo extends FiguraG{
         return perimetro;
         
     }
-    public void DibujarTriangulo(Graphics g){
+    @Override
+    public void DibujarEnPlano(Graphics g){
         p1=listaPuntos.get(0);
         p2=listaPuntos.get(1);
         p3=listaPuntos.get(2);

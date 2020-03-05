@@ -57,8 +57,7 @@ public class FiguraG extends Punto{
         g.setColor(Color.RED);
         g.drawRect(this.getX(),this.getY(),this.getAlto(), this.getAncho());
         g.fillRect(this.getX(),this.getY(),this.getAlto(), this.getAncho());
-       
-     
+
     }
     /**
      * Metodo que Valida si las coordenadas del usuario

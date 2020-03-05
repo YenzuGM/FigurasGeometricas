@@ -82,7 +82,7 @@ public class AreaDibujo extends javax.swing.JPanel {
        if (opcion==3){
            
            t.setListaPuntos(listaPuntos);
-           t.DibujarTriangulo(g);
+           t.DibujarEnPlano(g);
        }
     }
     

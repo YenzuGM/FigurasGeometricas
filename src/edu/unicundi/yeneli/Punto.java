@@ -15,6 +15,12 @@ public class Punto {
     //Variables X y Y
     private int x;
     private int y;
+
+    @Override
+    public String toString() {
+        return "Punto{" + "x=" + x + ", y=" + y + '}';
+    }
+    
 //Constructor
     public Punto() {
         this.x = x;
