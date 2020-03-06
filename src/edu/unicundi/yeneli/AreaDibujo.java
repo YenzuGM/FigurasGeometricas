@@ -21,19 +21,19 @@ public class AreaDibujo extends javax.swing.JPanel {
     int opcion=0;
     //Lista de puntos
     LinkedList <Punto> listaPuntos = new LinkedList(); 
-
+    //Get de la lista Puntos
     public LinkedList<Punto> getListaPuntos() {
         return listaPuntos;
     }
-
+    //Set de la Lista Puntos
     public void setListaPuntos(LinkedList<Punto> listaPuntos) {
         this.listaPuntos = listaPuntos;
     }
-
+    //Get de opcion
     public int getOpcion() {
         return opcion;
     }
-
+    //Set de opcion
     public void setOpcion(int opcion) {
         this.opcion = opcion;
     }
