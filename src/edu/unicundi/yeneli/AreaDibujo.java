@@ -75,17 +75,22 @@ public class AreaDibujo extends javax.swing.JPanel {
     public void paint(Graphics g) {
         
         super.paint(g); //To change body of generated methods, choose Tools | Templates.
-        
+        //Si es cuadrado o rectangulo 
         if(opcion==1 || opcion==2){
+            //Se manda a llamar el metodo dibujar en plano que esta en figuras 
              r.DibujarEnPlano(g);
         }
+        //Si es triangulo
        if (opcion==3){
-           
+           //Se setea la lista de coordenadas
            t.setListaPuntos(listaPuntos);
+           //Se manda a llamar el metodo diibujar en plano que esta en triangulo 
            t.DibujarEnPlano(g);
        }
     }
-    
+    /**
+     * metodo que actualiza o repinta el panel 
+     */
     public void Actualizar(){
         repaint();
     }

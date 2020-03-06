@@ -20,10 +20,11 @@ public class Rectangulo extends FiguraG{
      */
     @Override
     public int CalcularPerimetro(int fAncho, int fAlto){
+      //Variable entera que guarda el perimetro
         int perimetro=0;
-        
+        //se calcula el perimetro
         perimetro=(fAncho*2)+(fAlto*2);
-        
+        //se returna el perimetro
         return perimetro;
     }
     
